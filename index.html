@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Hot Cup of Tea</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #a8b535;
+        }
+
+        .cup {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+            border-radius: 0 0 80px 80px;
+            border: 5px solid #333;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cup::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 20px;
+            background-color: #fff;
+            border-top-left-radius: 100px;
+            border-top-right-radius: 100px;
+            border: 5px solid #333;
+            border-bottom: none;
+        }
+
+        .tea {
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+            width: 140px;
+            height: 90px;
+            background-color: #d4a017;
+            border-radius: 0 0 70px 70px;
+        }
+
+        .steam {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            opacity: 0;
+            animation: steam-rise 3s ease-in-out infinite;
+        }
+
+        .steam::before,
+        .steam::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            opacity: 0;
+            animation: steam-rise 3s ease-in-out infinite;
+        }
+
+        .steam::before {
+            animation-delay: 1s;
+        }
+
+        .steam::after {
+            animation-delay: 2s;
+        }
+
+        @keyframes steam-rise {
+            0% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cup">
+        <div class="tea"></div>
+        <div class="steam"></div>
+    </div>
+</body>
+</html>
